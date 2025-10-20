@@ -14,11 +14,11 @@ No JS frameworks lagging the hell out of your site.
 
 Widgets
 ---------------
-ez-button
-ez-header
-ez-item
-ez-list
-ez-render
-ez-schemesw
-ez-sidebar
-ez-toggle
+  ez-button
+  ez-header
+  ez-item
+  ez-list
+  ez-render
+  ez-schemesw
+  ez-sidebar
+  ez-toggle
