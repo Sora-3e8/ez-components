@@ -1,0 +1,37 @@
+:host {
+
+
+  display: inline-flex;
+  background-color: var(--tint0);
+  width: 100%;
+  font-size: 2vh;
+  padding: 0;
+  color: white;
+
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  box-shadow: 0px 0px 1px black;
+}
+
+:host(:not(:has(input[type="checkbox"]))) {
+  justify-content: center;
+}
+
+::slotted(*) {
+  padding: var(--padding-normal);
+  margin: auto;
+}
+
+:host(:hover) {
+  filter: brightness(120%);
+}
+
+
+::slotted(input[type="checkbox"]) {
+
+  width: var(--ico-size-normal);
+  height: var(--ico-size-normal);
+  margin: 3vh;
+}
