@@ -5,3 +5,10 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+#page_title {
+  color: white;
+  display: block;
+  padding: 2vh !important;
+  font-weight: 700;
+}
