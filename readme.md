@@ -29,6 +29,8 @@ Widgets
 Install
 ---------------
 - Simply add this to your html file:
+
+
   ```
   <script src="YOUR_PATH/ez_components/ez_components/components.js"></script>
   ```
