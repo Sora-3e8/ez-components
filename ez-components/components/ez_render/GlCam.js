@@ -258,8 +258,8 @@ class GlCam
 		if (this.projection_type == GlCamProjType.orthogonal)
 		{
 			let m_vec = new Mat([0,0,1,0],4).multiply(Mutils.Rotate(this.pitch,this.yaw,this.roll).transpose()).cells;
-			//let lookVec = {x:m_vec[0], y:m_vec[1], z:m_vec[2]};
-			let lookVec = {x:0,y:0,z:1};
+			let lookVec = {x:m_vec[0], y:m_vec[1], z:m_vec[2]};
+			//let lookVec = {x:0,y:0,z:1};
 			let m_proj = Mutils.Parallel_proj(aspect,lookVec,this.wz).cells;
 			gl.uniformMatrix4fv(shader.projectionMatrix, true, new Float32Array(m_proj));
 		}
