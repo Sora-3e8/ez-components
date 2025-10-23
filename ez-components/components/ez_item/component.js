@@ -9,7 +9,7 @@ class ez_item extends HTMLElement {
 		this.component_root = `${path_array.join("/")}`;
 
 		shadowRoot.innerHTML = `
-    <link rel="stylesheet" href="${component_root}/component.css">
+    <link rel="stylesheet" href="${this.component_root}/component.css">
     <slot></slot>
     `;
 	}

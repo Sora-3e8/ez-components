@@ -8,7 +8,7 @@ class ez_sidebar extends HTMLElement {
 		path_array.pop();
 		this.component_root = `${path_array.join("/")}`;
 
-        shadowRoot.innerHTML = `<link rel="stylesheet" href="${component_root}/component.css"><slot></slot>`;
+        shadowRoot.innerHTML = `<link rel="stylesheet" href="${this.component_root}/component.css"><slot></slot>`;
         this.style.display="none";
         window.addEventListener("hashchange",()=>{this.check_state()});
         this.check_state();
