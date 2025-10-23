@@ -1,6 +1,6 @@
 /** This file will be used for SELECTING your theme **/
 /* Pulls in a selected theme (only one should be imported!) */
-@import "../ez_components/themes/modern-flat.css";
+@import "../ez-components/themes/modern-flat.css";
 
 /* Here you can put your overrides */
 
