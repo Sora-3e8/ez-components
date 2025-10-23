@@ -109,9 +109,9 @@ class GlCamManager
 		{
 			if(this.Camera.cam_type == GlCamType.orbit)
 			{
-				let z = k;
-				z = k*20;
-				this.Camera.wz = (z*this.Camera.zoom_speed);
+				let sign = k/math.abs(k);
+				let z = math.pow(10,-k*this.Camera.zoom_speed); 
+				this.Camera.wz = this.Camera.wz * math.max(z,0);
 			}
 			else
 			{
@@ -259,7 +259,11 @@ class GlCam
 
 		if (this.projection_type == GlCamProjType.orthogonal)
 		{
-			let m_proj = Mutils.Parallel_proj(aspect,vector3D.from_angles(this.pitch,this.yaw,this.roll),this.wz).cells;
+			let m_vec = new Mat([0,0,1,0],4).multiply(Mutils.Rotate(this.pitch,this.yaw,this.roll).transpose()).cells;
+			//let lookVec = {x:m_vec[0], y:m_vec[1], z:m_vec[2]};
+			let lookVec = {x:0,y:0,z:1};
+			console.log("Res:",lookVec);
+			let m_proj = Mutils.Parallel_proj(aspect,lookVec,this.wz).cells;
 			gl.uniformMatrix4fv(shader.projectionMatrix, true, new Float32Array(m_proj));
 		}
 
