@@ -12,7 +12,7 @@ let component_list =
 		"ez_render"];
 let path_array = document.currentScript.getAttribute("src").split("/");
 path_array.pop();
-let components_root =  `${this.path_array.join("/")}/components/`;
+let components_root =  `${path_array.join("/")}/components/`;
 
 //* Loads components from list *//
 for (let i = 0; i < component_list.length; i++)
