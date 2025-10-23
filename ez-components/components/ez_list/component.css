@@ -1,0 +1,22 @@
+/* Disables text selection highlight */
+:host {
+
+
+  /* Safari */
+  -webkit-user-select: none;
+  /* IE 10 and IE 11 */
+  -ms-user-select: none;
+  /* Standard syntax */
+  user-select: none;
+
+}
+
+/* Disables text selection highlight */
+
+:host {
+  display: flex;
+  flex-direction: column;
+  color: var(--tint2);
+}
+
+::slotted(*) {}
