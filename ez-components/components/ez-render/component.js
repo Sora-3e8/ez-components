@@ -142,8 +142,8 @@ class ez_render extends HTMLElement {
 			if(input_states[camcontrols["left"]]){CamManager.move_left(input_states[camcontrols["left"]])};
 			if(input_states[camcontrols["pan_move"]])
 			{
-				CamManager.Camera.x-=(input_states["m_dx"]*CamManager.Camera.mspeed/CamManager.Camera.wz);
-				CamManager.Camera.y+=(input_states["m_dy"]*CamManager.Camera.mspeed/CamManager.Camera.wz);
+				CamManager.Camera.x-=(input_states["m_dx"]*CamManager.Camera.mspeed*CamManager.Camera.wz);
+				CamManager.Camera.y+=(input_states["m_dy"]*CamManager.Camera.mspeed*CamManager.Camera.wz);
 				input_states["m_dx"]=0;
 				input_states["m_dy"]=0;
 			}
