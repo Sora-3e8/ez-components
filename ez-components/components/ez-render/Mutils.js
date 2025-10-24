@@ -57,7 +57,7 @@ class Mutils
 			sq.x/aspect,   0,    0,     0,
 			    0,        sq.y,  0,     0,
 			    0,         0,   sq.z,   0,
-			    0,         0,    0,   1/dist
+			    0,         0,    0,    dist
 		];
 		return Mat.uniform(matrix);
 	}
