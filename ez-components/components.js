@@ -2,14 +2,14 @@
 // Consider moving to standalone file check if it won't hurt performance
 let component_list = 
 	[
-		"ez_schemesw",
-		"ez_header",
-		"ez_button",
-		"ez_sidebar",
-		"ez_toggle",
-		"ez_list",
-		"ez_item",
-		"ez_render"];
+		"ez-schemesw",
+		"ez-header",
+		"ez-button",
+		"ez-sidebar",
+		"ez-toggle",
+		"ez-list",
+		"ez-item",
+		"ez-render"];
 let path_array = document.currentScript.getAttribute("src").split("/");
 path_array.pop();
 let components_root =  `${path_array.join("/")}/components/`;
