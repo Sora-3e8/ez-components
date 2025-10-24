@@ -1,0 +1,38 @@
+/* Scaling and alignment */
+:host {
+	display: block;
+	width: 100%;
+	height: var(--header-size);
+	padding: 0;
+	margin: 0
+}
+
+/* Scaling and alignment */
+
+
+/* Styling */
+:host {
+	background-color: var(--tint0);
+	color: var(--tint2);
+}
+
+/* Styling */
+
+
+slot {
+	display: inline-flex;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+::slotted(*) {
+	display: inline-flex;
+	align-items: center;
+	align-self: center;
+	align-content: center;
+	text-align: center;
+	height: 100%;
+	line-height: 100%;
+	margin: 0;
+}

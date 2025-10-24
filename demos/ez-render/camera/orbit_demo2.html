@@ -1,0 +1,56 @@
+<html tint="red">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../../theme.css">
+  <link rel="stylesheet" href="resources/styles/demo.css">
+  <script src="../../../ez-components/components.js"></script>
+  <script>
+    var renderer = null 
+    var pos = 0;
+
+    function page_init()
+    {
+      renderer = document.querySelector("ez-render");
+      renderer.camcontrols["rotate"] = "lmb";
+
+      renderer.add_scene(new GlScene()); renderer.use_scene(0); renderer.Scene.cam_manager.add_cam(new GlCam(0,1));
+      renderer.Scene.cam_manager.use_cam(0); renderer.Scene.cam_manager.Camera.z = -2;
+      renderer.Scene.cam_manager.Camera.rxspeed = 0.01;
+      renderer.Scene.cam_manager.Camera.ryspeed = 0.01;
+      renderer.Scene.cam_manager.Camera.show_orbitpivot = true;
+      renderer.Scene.cam_manager.Camera.wz = -4; renderer.Scene.cam_manager.Camera.pitch = -0.2;
+      renderer.Scene.add_object( new GlObject( GlGeometry.cube(1),{x:-4,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
+      renderer.Scene.add_object( new GlObject( GlGeometry.cube(1),{x:0,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
+      renderer.Scene.add_object( new GlObject( GlGeometry.cube(1),{x:4,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
+
+      setInterval(()=>
+      {
+        pos += 0.02;
+        let red = math.abs(math.sin(pos)); let green = math.abs(math.cos(pos+(2*math.pi/3))); let blue = math.abs(math.sin(pos+(2*math.pi/3)));
+        let cam = renderer.Scene.cam_manager.Camera;
+        for(let i=0;i<3;i++){ renderer.Scene.object_list[i].color = [red,green,blue,1]; }
+        renderer.Scene.object_list[0].rotation.pitch += 0.01;
+        renderer.Scene.object_list[1].rotation.yaw += 0.01;
+        renderer.Scene.object_list[2].rotation.roll += 0.01;
+      },10);
+      renderer.set_fps(60);
+
+    } 
+  </script>
+</head>
+
+<ez-header>
+  <div class="no_select" id="page_title">ez-render</div>
+    <ez-btn><icon style="--ico-src:url('resources/images/orbit.svg');"></icon>button</ez-btn>
+  <ez-schemesw style="margin-left:auto;"></ez-schemesw>
+</ez-header>
+
+<body style="box-sizing:border-box;" onload="page_init();">
+  <main style="display:block; width:94%; height:88%; margin:auto;">
+    <ez-render style="width:100%; height:100%;"></ez-render>
+  </main>
+  <div style="box-sizing:border-box; text-align:center; height:3vh; margin-bottom:0;">hewwo ^.^</div>
+</body>
+
+</html>
+ 

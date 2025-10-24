@@ -1,0 +1,14 @@
+.no_select {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#page_title {
+  color: white;
+  display: block;
+  padding: 2vh !important;
+  font-weight: 700;
+}

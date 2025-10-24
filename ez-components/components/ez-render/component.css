@@ -1,0 +1,13 @@
+:host {
+
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  width: 720px;
+  height: 480px;
+}
+
+:host canvas {
+  width: 100%;
+  height: 100%;
+}
