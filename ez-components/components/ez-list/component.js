@@ -28,31 +28,28 @@ class ez_list extends HTMLElement
 
 			for(let i=0; i<this.children.length; i++)
 			{
-				if(this.selected_item == i){ this.children[i].setAttribute("selected","true"); } else{ this.children[i].setAttribute("selected",""); }
+				if(this.selected_item == i)
+				{ this.children[i].setAttribute("selected","true"); } else{ this.children[i].setAttribute("selected",""); }
 			}
 		}
 	}
 
-	selected_up()
-	{
-		this.move_up(this.selected_item);
-		this.selected_item -=1;
-	}
+	selected_up() { this.move_to(this.selected_item,this.selected_item-1); }
 
-	selected_down()
-	{
-		this.move_down(this.selected_item);
-		this.selected_item +=1;
-	}
+	selected_down() { this.move_to(this.selected_item+1,this.selected_item); }
 	
-	move_up(index)
-	{
-		if(index>0){ this.insertBefore(this.children[index], this.children[index-1]); }
-	}
 
-	move_down(index)
+	move_to(index,index_to)
 	{
-		this.insertBefore(this.children[index+1], this.children[index]);
+
+		if(index<this.childElementCount && index_to>=0)
+		{
+			let item_src = this.children[index];
+			let item_dst = this.children[index_to];
+			this.insertBefore(this.children[index], this.children[index_to]);
+			if(index_to<this.selected_item){this.selected_item=index_to;}else{if(index>this.selected_item){this.selected_item=index;}}
+		}
+
 	}
 
 	select_item(index)
@@ -62,4 +59,4 @@ class ez_list extends HTMLElement
 
 }
 customElements.define("ez-list", ez_list);
-console.log("Component ez-dlist loaded");
+console.log("Component ez-list loaded");
