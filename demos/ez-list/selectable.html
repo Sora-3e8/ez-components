@@ -1,0 +1,26 @@
+<html tint="red">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="resources/styles/demo.css">
+  <script src="../../ez-components/components.js"></script>
+</head>
+<ez-header>
+  <div class="no_select" id="page_title">Dynamic list</div>
+  <ez-schemesw style="margin-left:auto;"></ez-schemesw>
+</ez-header>
+<body>
+<div style="width:20vw; min-width:250px;">
+  <ez-list selectable="true" style="margin:1vh!important; max-height:20vh; overflow: scroll;">
+    <ez-item><div>hello</div></ez-item>
+    <ez-item><div>hello2</div></ez-item>
+    <ez-item><div>hello3</div></ez-item>
+    <ez-item><div>hello4</div></ez-item>
+  </ez-list>
+  <ez-item>
+    <ez-btn onclick="document.querySelector('ez-list').selected_up();" style="width:50%;">&uarr;</ez-btn>
+    <ez-btn onclick="document.querySelector('ez-list').selected_down();" style="width:50%;">&darr;</ez-btn>
+  </ez-item>
+</div>
+</body>
+</html>

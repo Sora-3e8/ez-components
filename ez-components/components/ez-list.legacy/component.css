@@ -20,7 +20,3 @@
 }
 
 ::slotted(*) {}
-
-::slotted(ez-item[selected="true"]) {
-  filter: brightness(120%);
-}

@@ -107,7 +107,10 @@ class GlCamManager
 	{
 		if(this.Camera.projection_type == GlCamProjType.orthogonal || this.Camera.cam_type == GlCamType.orbit)
 		{
-			this.Camera.wz *= math.exp(-k * this.Camera.zoom_speed/10);
+			let scaler = math.exp(-k * this.Camera.zoom_speed);
+			let s_fac = math.e/4;
+			//this.Camera.wz = ((s_fac*scaler) +  (1-s_fac)) * this.Camera.wz;
+			this.Camera.wz *= math.exp(-k * this.Camera.zoom_speed); 
 		}
 	}
 
@@ -118,8 +121,6 @@ class GlCamManager
 		{
 			new GlObject(GlGeometry.cube(0.08),{x:-this.Camera.x,y:-this.Camera.y,z:-this.Camera.z}).update(gl,surface,shader);
 		}
-
-
 	}
 
 	// unit vector cam forward

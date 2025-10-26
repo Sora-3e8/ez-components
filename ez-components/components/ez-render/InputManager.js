@@ -33,18 +33,22 @@ class InputManager
 
 		surface.addEventListener("wheel", (event)=>
 		{
+			requestAnimationFrame(()=>{
 			let delta_t = 1;
 			if(this.last_wheel != null){delta_t = Date.now() - this.last_wheel;}
 			if(delta_t>1){delta_t=1;}
-			this.input_states["m_dw"] +=  (-event.deltaY/math.abs(event.deltaY))*delta_t; 
+			this.input_states["m_dw"] += -event.deltaY/math.abs(event.deltaY)/10;
 			event.preventDefault();
 			this.last_wheel = Date.now();
+			});
 		});
 	
 		surface.addEventListener("mousemove", (event)=>
 		{
+			requestAnimationFrame(()=>{
+
 			this.input_states.m_dx = -event.movementX;
-			this.input_states.m_dy = -event.movementY;
+			this.input_states.m_dy = -event.movementY;});
 		}, false);
     
     surface.addEventListener("mousenter", (event)=>{ surface.focus(); });

@@ -9,7 +9,8 @@ let component_list =
 		"ez-toggle",
 		"ez-list",
 		"ez-item",
-		"ez-render"];
+		"ez-render"
+	];
 let path_array = document.currentScript.getAttribute("src").split("/");
 path_array.pop();
 let components_root =  `${path_array.join("/")}/components/`;
