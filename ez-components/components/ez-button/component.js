@@ -8,6 +8,10 @@ class ez_btn extends HTMLElement {
 		path_array.pop();
 		this.component_root = `${path_array.join("/")}`;
 		shadowRoot.innerHTML = `<link rel="stylesheet" href="${this.component_root}/component.css"><slot></slot>`;
+		if( this.hasAttribute("round") )
+		{
+			this.style.borderRadius = this.getAttribute("round");
+		}
     let icons = this.querySelectorAll("icon");
 
     // Icon can be set through variable only if set in separate style child for every element <icon>
