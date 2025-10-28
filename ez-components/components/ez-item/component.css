@@ -1,8 +1,6 @@
 :host {
-
-
   display: inline-flex;
-  background-color: var(--tint0);
+  background-color: var(--secondaryColorWidget);
   width: 100%;
   font-size: 2vh;
   padding: 0;

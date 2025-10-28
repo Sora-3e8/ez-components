@@ -27,7 +27,7 @@
   transition-duration: 0.5s;
 
   box-shadow: 0px 0px 10px rgb(25, 25, 25);
-  background-color: var(--tint1)
+  background-color: var(--secondaryColorWidget)
 }
 
 /* Theme style */
@@ -42,7 +42,7 @@ state-icon {
   align-self: center;
   align-content: center;
   align-items: center;
-  background-color: var(--ico-tint);
+  background-color: var(--tertiaryColorWidget);
   transition-duration: 0.2s;
 }
 
@@ -50,7 +50,7 @@ state-icon {
 :host(:hover) {
   transition-property: box-shadow filter;
   transition-duration: 0.5s;
-  box-shadow: 0px 0px 10px var(--tint1);
+  box-shadow: 0px 0px 10px var(--secondaryColorWidget);
   filter: brightness(120%);
 
 }
