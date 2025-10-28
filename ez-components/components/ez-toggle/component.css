@@ -75,7 +75,7 @@ slot {
 
 /* Themed icon styling */
 ::slotted(icon) {
-  background-color: var(--ico-tint);
+  background-color: var(--tertiaryColorWidget);
 }
 
 /* Themed icon styling */
