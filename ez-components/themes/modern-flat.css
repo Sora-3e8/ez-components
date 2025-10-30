@@ -8,18 +8,13 @@
   padding: 0px;
  }
 
- div {
-  margin: 1vh;
-
- }
-
  /* Scaling and align attributes */
  :root {
   --header-size: 7vh;
   --ico-size-normal: 3vh;
   --font-normal: 2vh;
   --padding-normal: 2vh;
-  --padding-ezitem: 5px;
+  --padding-ezitem: 10px;
  }
 
 
