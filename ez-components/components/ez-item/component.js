@@ -13,7 +13,7 @@ class ez_item extends HTMLElement
     <link rel="stylesheet" href="${this.component_root}/component.css">
     <slot></slot>
     `;
-		this.onclick = (event) => { if(event.target != this){event.stopPropagation();this.click(); }};
+		this.addEventListener("click", (event) => { if(event.target != this){event.stopPropagation();this.click(); }});
 
 	}
 }
