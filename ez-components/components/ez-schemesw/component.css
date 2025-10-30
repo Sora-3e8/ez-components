@@ -18,7 +18,7 @@
 
   align-content: center;
   align-items: center;
-  margin: 5px;
+  margin: var(--ezchemeswMargin);
 }
 
 /* Theme style */
@@ -27,7 +27,7 @@
   transition-duration: 0.5s;
 
   box-shadow: 0px 0px 10px rgb(25, 25, 25);
-  background-color: var(--secondaryColorWidget)
+  background-color: var(--secondaryWidgetColor)
 }
 
 /* Theme style */
@@ -42,7 +42,7 @@ state-icon {
   align-self: center;
   align-content: center;
   align-items: center;
-  background-color: var(--tertiaryColorWidget);
+  background-color: var(--tertiaryWidgetColor);
   transition-duration: 0.2s;
 }
 
@@ -50,7 +50,7 @@ state-icon {
 :host(:hover) {
   transition-property: box-shadow filter;
   transition-duration: 0.5s;
-  box-shadow: 0px 0px 10px var(--secondaryColorWidget);
+  box-shadow: 0px 0px 10px var(--secondaryWidgetColor);
   filter: brightness(120%);
 
 }

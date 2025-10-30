@@ -1,17 +1,16 @@
 :host {
   display: inline-flex;
   box-sizing: border-box;
-  background-color: var(--secondaryColorWidget);
+  background-color: var(--secondaryWidgetColor);
   width: 100%;
   font-size: var(--font-normal);
   padding: 0;
-  color: var(--tertiaryColorWidget);
-
-  justify-items: center;
+  color: var(--tertiaryWidgetColor);
   align-items: center;
   align-content: space-evenly;
   text-align: center;
   box-shadow: 0px 0px 1px black;
+  margin: var(--ezitemMargin)
 }
 
 :host(:not(:has(input[type="checkbox"]))) {
@@ -22,7 +21,7 @@
   margin: auto;
   min-width: 10%;
   max-width: 100%;
-  padding: var(--padding-ezitem);
+  padding: var(--ezitemPadding);
 }
 
 :host(:hover) {

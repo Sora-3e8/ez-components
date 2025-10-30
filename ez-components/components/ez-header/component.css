@@ -12,7 +12,7 @@
 
 /* Styling */
 :host {
-	background-color: var(--primaryColorWidget);
+	background-color: var(--primaryWidgetColor);
 	color: var(--tint2);
 }
 

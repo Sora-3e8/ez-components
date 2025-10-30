@@ -14,7 +14,7 @@
   --ico-size-normal: 3vh;
   --font-normal: 2vh;
   --padding-normal: 2vh;
-  --padding-ezitem: 10px;
+  --ezitemPadding: 10px;
  }
 
 
@@ -24,31 +24,31 @@
  /* Fallback gray color pallete */
  :root {
   --primaryColor: light-dark(rgb(200, 200, 200), rgb(30, 30, 30));
-  --primaryColorWidget: light-dark(rgb(90, 90, 90), rgb(50, 50, 50));
-  --secondaryColorWidget: light-dark(rgb(65, 65, 65), rgb(75, 75, 75));
-  --tertiaryColorWidget: light-dark(white, white);
+  --primaryWidgetColor: light-dark(rgb(90, 90, 90), rgb(50, 50, 50));
+  --secondaryWidgetColor: light-dark(rgb(65, 65, 65), rgb(75, 75, 75));
+  --tertiaryWidgetColor: light-dark(white, white);
  }
 
  /* Fallback gray color pallete */
 
  :root[tint="red"] {
   --primaryColor: light-dark(rgb(255, 230, 230), rgb(45, 0, 20));
-  --primaryColorWidget: light-dark(#c9184a, #a4133c);
-  --secondaryColorWidget: light-dark(#ff4d6d, #ff0a54);
+  --primaryWidgetColor: light-dark(#c9184a, #a4133c);
+  --secondaryWidgetColor: light-dark(#ff4d6d, #ff0a54);
   color: light-dark(darkred, lavenderblush);
-  --tertiaryColorWidget: light-dark(linen, lavenderblush);
+  --tertiaryWidgetColor: light-dark(linen, lavenderblush);
  }
 
  :root[tint="green"] {
   --primaryColor: light-dark(rgb(220, 255, 220), rgb(10, 35, 0));
-  --primaryColorWidget: light-dark(rgb(10, 140, 10), rgb(40, 135, 10));
-  --secondaryColorWidget: light-dark(rgb(40, 185, 0), rgb(70, 165, 40));
-  --tertiaryColorWidget: light-dark(white, mintcream);
+  --primaryWidgetColor: light-dark(rgb(10, 140, 10), rgb(40, 135, 10));
+  --secondaryWidgetColor: light-dark(rgb(40, 185, 0), rgb(70, 165, 40));
+  --tertiaryWidgetColor: light-dark(white, mintcream);
  }
 
  :root[tint="blue"] {
   --primaryColor: light-dark(rgb(200, 215, 240), rgb(20, 40, 65));
-  --primaryColorWidget: light-dark(rgb(0, 50, 180), rgb(40, 70, 165));
-  --secondaryColorWidget: light-dark(rgb(0, 100, 255), rgb(70, 100, 195));
-  --tertiaryColorWidget: light-dark(white, lightcyan);
+  --primaryWidgetColor: light-dark(rgb(0, 50, 180), rgb(40, 70, 165));
+  --secondaryWidgetColor: light-dark(rgb(0, 100, 255), rgb(70, 100, 195));
+  --tertiaryWidgetColor: light-dark(white, lightcyan);
  }
