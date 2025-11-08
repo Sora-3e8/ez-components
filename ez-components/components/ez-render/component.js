@@ -141,8 +141,7 @@ class ez_render extends HTMLElement {
 	
 	init_inputs()
 	{
-		this.input_manager = new InputManager(this.surface);
-		setInterval(()=> {if(this.enable_dcamcontroller == true){this.camcontrol_handle();}},10);
+		this.input_manager = new InputManager(this.surface);	
 	}
 
 	add_scene(scene)
@@ -164,6 +163,8 @@ class ez_render extends HTMLElement {
 	set_fps(fps)
 	{
 		if( this.render_interval != null ){ this.render_interval.clearInterval(); }
+		if(this.input_interval == null ){this.input_interval = setInterval(()=> {if(this.enable_dcamcontroller == true){this.camcontrol_handle();}},10);}
+		
 		this.render_interval = setInterval(()=> { requestAnimationFrame( ()=> { this.update(); }); },(1/fps)*1000);
 	}
 	camcontrol_handle()
