@@ -1,5 +1,32 @@
 //* Component ez-render *//
 
+class GlScene
+{
+  object_list = [];
+  cam_manager = null;
+  
+  constructor()
+  {
+
+  }
+
+  add_object(object)
+  {
+    this.object_list.push(object);
+  }
+
+  remove_object(index)
+  {
+    this.object_list.splice(index,1);
+  }
+
+  update(gl,surface,shader)
+  {
+    this.cam_manager.update(gl,surface,shader);
+    for(let i=0; i<this.object_list.length; i++){ this.object_list[i].update(gl,surface,shader); }
+	}
+}
+
 class ez_render extends HTMLElement {
 
 	enable_dcamcontroller = true;
@@ -29,19 +56,25 @@ class ez_render extends HTMLElement {
 			"Colors.js",
 			"InputManager.js",
 			"GlCam.js",
-			"GlScene.js",
+			"GlObject.js",
 			"GlShaders.js",
 			"GlGeometry.js",
 		];
 		//* Dependent scrips which had to be separated *//
 	
-		this.loadDeps(deps);
+
 		shadowRoot.innerHTML =
 		`
 		<link rel="stylesheet" href="${this.component_root}/component.css">
+		<script>
+
+		</script>
 		<canvas></canvas>
 		`;
+
+		this.loadDeps(deps);
 		window.addEventListener("load",()=>{this.init();});
+
 	}
 
 	loadDeps(deps)
@@ -52,6 +85,10 @@ class ez_render extends HTMLElement {
 			dep.src = `${this.component_root}/${deps[i]}`;
 			this.shadowRoot.appendChild(dep);
 		}
+
+		this.add_scene(new GlScene());
+		this.use_scene(0);
+
 	}
 
 	init()
@@ -76,10 +113,10 @@ class ez_render extends HTMLElement {
 
 		//this.surface.addEventListener("click", async () => { await this.surface.requestPointerLock({unadjustedMovement: false});});
 	}
-
+	
 	init_rendering()
 	{
-		this.gl = this.surface.getContext("webgl2", {antialias: true});
+		this.gl = this.surface.getContext("webgl2", {antialias: false});
 		const gl = this.gl;
 
 		window.addEventListener("resize",(event)=>{ gl.viewport(0,0,this.surface.width,this.surface.height); });
@@ -88,6 +125,8 @@ class ez_render extends HTMLElement {
     if(this.debug){gl.clearColor(0.0, 0.0, 0.0, 1.0);} //Debug blackening of canvas
     gl.enable(gl.CULL_FACE);
     gl.enable(gl.BLEND);
+    gl.enable(gl.SAMPLE_COVERAGE);
+		gl.sampleCoverage(1, false);
 		gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 		gl.enable(gl.SAMPLE_ALPHA_TO_COVERAGE);
     gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
@@ -104,7 +143,6 @@ class ez_render extends HTMLElement {
 	{
 		this.input_manager = new InputManager(this.surface);
 		setInterval(()=> {if(this.enable_dcamcontroller == true){this.camcontrol_handle();}},10);
-
 	}
 
 	add_scene(scene)
@@ -166,9 +204,8 @@ class ez_render extends HTMLElement {
 	update()
 	{
 		const gl = this.gl;
-
-		gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-		if(this.Scene){this.Scene.update(gl,this.surface,this.shader)};
+		gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT); // Cleaning up before next rendering
+		if(this.Scene){this.Scene.update(gl,this.surface,this.shader)}; // All render happens in this line
 	}
 	
 }

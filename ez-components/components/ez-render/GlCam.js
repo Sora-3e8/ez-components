@@ -39,7 +39,11 @@ class GlCamManager
 	aligned_vector = [];
 	selected_cam = null;
 
-	constructor(){}
+	constructor()
+	{
+		this.add_cam(new GlCam());
+		this.use_cam(0);
+	}
 
 	add_cam(cam_obj)
 	{

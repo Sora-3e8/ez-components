@@ -1,29 +1,4 @@
-class GlScene
-{
-  object_list = [];
-  cam_manager = null;
-  
-  constructor()
-  {
-    this.cam_manager = new GlCamManager();
-  }
 
-  add_object(object)
-  {
-    this.object_list.push(object);
-  }
-
-  remove_object(index)
-  {
-    this.object_list.splice(index,1);
-  }
-
-  update(gl,surface,shader)
-  {
-    this.cam_manager.update(gl,surface,shader);
-    for(let i=0; i<this.object_list.length; i++){ this.object_list[i].update(gl,surface,shader); }
-	}
-}
 
 class GlObject
 {

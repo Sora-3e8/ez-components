@@ -4,41 +4,57 @@
   <link rel="stylesheet" href="resources/styles/demo.css">
   <script src="../../../ez-components/components.js"></script>
   <script>
-    var renderer = null 
+    var renderer; 
     var pos = 0;
     var show_pivot = false;
+    
+    var scene; 
+    var cam_manager;
+    var camera;
+
     function page_init()
     {
       renderer = document.querySelector("ez-render");
+      scene = renderer.Scene;
+      scene.cam_manager = new GlCamManager();
+    
+      cam_manager = renderer.Scene.cam_manager;
+      camera = renderer.Scene.cam_manager.Camera;
+
       renderer.camcontrols["rotate"] = "never";
       renderer.camcontrols["zoom"] = "never"
       renderer.camcontrols["left"] = "never";
       renderer.camcontrols["right"] = "never";
       renderer.camcontrols["back"] = "never";
       renderer.camcontrols["forward"] = "never";
-
-      renderer.add_scene(new GlScene()); renderer.use_scene(0); renderer.Scene.cam_manager.add_cam(new GlCam(0,1));
-      renderer.Scene.cam_manager.use_cam(0); renderer.Scene.cam_manager.Camera.z = -2;
-      renderer.Scene.cam_manager.Camera.rxspeed = 1;
-      renderer.Scene.cam_manager.Camera.ryspeed = 1;
-      renderer.Scene.cam_manager.Camera.show_orbitpivot = true; 
-      renderer.Scene.cam_manager.Camera.wz = -3; renderer.Scene.cam_manager.rotate(-0.3,0,0);
-      renderer.Scene.add_object( new GlObject( GlGeometry.cube(1),{x:-4,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
-      renderer.Scene.add_object( new GlObject( GlGeometry.cube(1),{x:0,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
-      renderer.Scene.add_object( new GlObject( GlGeometry.cube(1),{x:4,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
+      
+      camera.cam_type = GlCamType.orbit;
+      camera.z = -2;
+      camera.rxspeed = 1;
+      camera.ryspeed = 1;
+      camera.show_orbitpivot = true; 
+      camera.wz = -3;
+      cam_manager.rotate(-0.3,0,0);
+      
+      scene.add_object( new GlObject( GlGeometry.cube(1),{x:-4,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
+      scene.add_object( new GlObject( GlGeometry.cube(1),{x:0,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
+      scene.add_object( new GlObject( GlGeometry.cube(1),{x:4,y:0,z:0},{pitch:0,yaw:0,roll:0}) );
 
       setInterval(()=>
       {
         pos += 0.02;
-        let red = math.abs(math.sin(pos)); let green = math.abs(math.cos(pos+(2*math.pi/3))); let blue = math.abs(math.sin(pos+(2*math.pi/3)));
-        let cam = renderer.Scene.cam_manager.Camera;
-        for(let i=0;i<3;i++){ renderer.Scene.object_list[i].color = [red,green,blue,1]; }
-        renderer.Scene.cam_manager.Camera.wz = -3; renderer.Scene.cam_manager.rotate(0,0.003);
-        cam.show_orbitpivot = show_pivot;
+        let red = math.abs(math.sin(pos)); 
+        let green = math.abs(math.cos(pos+(2*math.pi/3)));
+        let blue = math.abs(math.sin(pos+(2*math.pi/3)));
+
+        for(let i=0;i<3;i++){ scene.object_list[i].color = [red,green,blue,1]; }
+        camera.wz = -3;
+        cam_manager.rotate(0,0.003);
+        camera.show_orbitpivot = show_pivot;
       },10);
       renderer.set_fps(60);
 
-    } 
+    }
   </script>
 </head>
 
@@ -48,7 +64,7 @@
   <ez-schemesw style="margin-left:auto;"></ez-schemesw>
 </ez-header>
 
-<body style="box-sizing:border-box;" onload="page_init();">
+<body onload="page_init();" style="box-sizing:border-box;">
   <main style="display:block; width:100%; height:88%; margin:auto;">
     <ez-render style="width:100%; height:100%;"></ez-render>
   </main>
