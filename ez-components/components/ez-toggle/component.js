@@ -7,7 +7,7 @@ class ez_toggle extends HTMLElement {
 
 		let path_array = document.currentScript.getAttribute("src").split("/");
 		path_array.pop();
-		this.component_root = `${path_array.join("/")}`;
+		this.component_root = `${window.components_root}/ez-toggle`;
 
 
 		if(!this.toggled){ this.toggled=false; }

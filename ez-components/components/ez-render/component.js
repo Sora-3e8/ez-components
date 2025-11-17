@@ -37,10 +37,7 @@ class ez_render extends HTMLElement {
 		super();
 		const shadowRoot = this.attachShadow({ mode: "open" });
 
-		let path_array = document.currentScript.getAttribute("src").split("/");
-		path_array.pop();
-		this.component_root = `${path_array.join("/")}`;
-
+		this.component_root = `${window.components_root}/ez-render`;
 		this.scene_list = [];
 		this.Scene = null;
 		this.selected_scene=null;

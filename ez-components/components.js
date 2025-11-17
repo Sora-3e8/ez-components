@@ -18,7 +18,7 @@ let selected_theme = "modern-flat";
 if(doc_root.hasAttribute("theme")){ theme = do_root.getAttribute("theme"); }
 let path_array = document.currentScript.getAttribute("src").split("/");
 path_array.pop();
-let components_root =  `${path_array.join("/")}/components/`;
+window.components_root =  `${path_array.join("/")}/components/`;
 let theme_src = document.createElement("style");
 theme_src.innerHTML = `@import '${path_array.join("/")}/themes/${selected_theme}.css'`;
 doc_head.appendChild(theme_src);
@@ -28,6 +28,6 @@ doc_head.appendChild(theme_src);
 for (let i = 0; i < component_list.length; i++)
 {
 	let component = document.createElement("script");
-	component.setAttribute("src", components_root + component_list[i]+"/component.js");
+	component.setAttribute("src", window.components_root + component_list[i]+"/component.js");
 	document.head.appendChild(component);
 }

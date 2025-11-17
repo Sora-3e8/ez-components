@@ -6,7 +6,7 @@ class ez_sidebar extends HTMLElement {
 
 		let path_array = document.currentScript.getAttribute("src").split("/");
 		path_array.pop();
-		this.component_root = `${path_array.join("/")}`;
+		this.component_root = `${window.components_root}/ez-sidebar`;
 
         shadowRoot.innerHTML = `<link rel="stylesheet" href="${this.component_root}/component.css"><slot></slot>`;
         this.style.display="none";

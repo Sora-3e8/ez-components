@@ -5,9 +5,7 @@ class ez_list extends HTMLElement
   {
 	  super();
     const shadowRoot = this.attachShadow({ mode: "open" });
-		let path_array = document.currentScript.getAttribute("src").split("/");
-		path_array.pop();
-		this.component_root = `${path_array.join("/")}`;
+		this.component_root = `${window.components_root}/ez-list`;
 		shadowRoot.innerHTML = `<link rel="stylesheet" href="${this.component_root}/component.css"><slot></slot>`;
 		this.onclick = (event)=>
 		{

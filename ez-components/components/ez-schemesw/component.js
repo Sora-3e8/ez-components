@@ -8,7 +8,7 @@ class ez_schemesw extends HTMLElement
 
 		let path_array = document.currentScript.getAttribute("src").split("/");
 		path_array.pop();
-		this.component_root = `${path_array.join("/")}`;
+		this.component_root = `${window.components_root}/ez-schemesw`;
 
 		shadowRoot.innerHTML = `<link rel="stylesheet" href="${this.component_root}/component.css"><state-icon/>`;
 		this.feature_check();
