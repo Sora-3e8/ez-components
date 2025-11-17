@@ -4,9 +4,6 @@ class ez_item extends HTMLElement
 	constructor() {
 		super();
 		const shadowRoot = this.attachShadow({ mode: "open" });
-		
-		let path_array = document.currentScript.getAttribute("src").split("/");
-		path_array.pop();
 		this.component_root = `${window.components_root}/ez-item`;
 
 		shadowRoot.innerHTML = `
