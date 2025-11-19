@@ -113,7 +113,7 @@ class ez_render extends HTMLElement {
 	
 	init_rendering()
 	{
-		this.gl = this.surface.getContext("webgl2", {antialias: false});
+		this.gl = this.surface.getContext("webgl2", {antialias: true});
 		const gl = this.gl;
 
 		window.addEventListener("resize",(event)=>{ gl.viewport(0,0,this.surface.width,this.surface.height); });
