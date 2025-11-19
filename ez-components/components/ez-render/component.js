@@ -113,7 +113,7 @@ class ez_render extends HTMLElement {
 	
 	init_rendering()
 	{
-		this.gl = this.surface.getContext("webgl2", {antialias: true});
+		this.gl = this.surface.getContext("webgl2", {antialias: false, premultipliedAlpha: true});
 		const gl = this.gl;
 
 		window.addEventListener("resize",(event)=>{ gl.viewport(0,0,this.surface.width,this.surface.height); });
@@ -123,9 +123,9 @@ class ez_render extends HTMLElement {
     gl.enable(gl.CULL_FACE);
     gl.enable(gl.BLEND);
     gl.enable(gl.SAMPLE_COVERAGE);
-		gl.sampleCoverage(1, false);
-		gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-		gl.enable(gl.SAMPLE_ALPHA_TO_COVERAGE);
+		gl.sampleCoverage(1.0, false);
+		gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+		gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
     gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
 	}
 
